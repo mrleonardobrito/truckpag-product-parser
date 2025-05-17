@@ -1,0 +1,30 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TruckPag Product Parser API",
+        "description": "Documentação da API de produtos TruckPag",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Lista todos os produtos",
+                "operationId": "4084735bfeaf0e3fd76128a9220a6394",
+                "responses": {
+                    "200": {
+                        "description": "Lista de produtos retornada com sucesso"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Produtos",
+            "description": "Produtos"
+        }
+    ]
+}

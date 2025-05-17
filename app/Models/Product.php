@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
+
+use MongoDB\Laravel\Eloquent\Model;
 
 class Product extends Model {
+    protected $connection = 'mongodb';
+    protected $collection = 'products';
     protected $fillable = [
         'code',
         'status',
