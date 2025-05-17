@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/",
+     *     path="/products",
      *     summary="Lista todos os produtos",
      *     tags={"Produtos"},
      *     @OA\Response(

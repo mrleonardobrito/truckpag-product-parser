@@ -6,13 +6,13 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/": {
+        "/products": {
             "get": {
                 "tags": [
                     "Produtos"
                 ],
                 "summary": "Lista todos os produtos",
-                "operationId": "4084735bfeaf0e3fd76128a9220a6394",
+                "operationId": "c1ff6f862214e1896c59cfe0491ce0e8",
                 "responses": {
                     "200": {
                         "description": "Lista de produtos retornada com sucesso"
