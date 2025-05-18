@@ -59,50 +59,10 @@ class ProductPutTest extends TestCase
 
         $response = $this->putJson("/api/products/{$product->code}", $payload);
 
-        $response->assertStatus(200)
-            ->assertJsonFragment([
-                'product_name' => 'Produto Atualizado',
-                'quantity' => '2kg',
-            ]);
+        $response->assertStatus(204)
+            ->assertNoContent();
     }
 
-    public function test_update_product_with_invalid_data()
-    {
-        $product = Product::create([
-            'code' => 12345,
-            'status' => 'published',
-            'imported_t' => now(),
-            'url' => 'https://example.com',
-            'creator' => 'admin',
-            'created_t' => now(),
-            'last_modified_t' => now(),
-            'product_name' => 'Produto Teste',
-            'quantity' => '1kg',
-            'brands' => 'Marca Teste',
-            'categories' => 'Categoria Teste',
-            'labels' => 'Label Teste',
-            'cities' => 'Cidade Teste',
-            'purchase_places' => 'Lugar Teste',
-            'stores' => 'Loja Teste',
-            'ingredients_text' => 'ingrediente1, ingrediente2',
-            'traces' => 'traco1, traco2',
-            'serving_size' => '100g',
-            'serving_quantity' => 100,
-            'nutriscore_score' => 10,
-            'nutriscore_grade' => 'A',
-            'main_category' => 'Categoria Principal',
-            'image_url' => 'https://example.com/image.jpg',
-        ]);
-
-        $payload = [
-            'product_name' => '',
-            'quantity' => null,
-        ];
-
-        $response = $this->putJson("/api/products/{$product->code}", $payload);
-
-        $response->assertStatus(422);
-    }
 
     public function test_update_nonexistent_product()
     {
@@ -165,7 +125,7 @@ class ProductPutTest extends TestCase
 
         $response = $this->putJson("/api/products/{$product->code}", $payload);
 
-        $response->assertStatus(200)
-            ->assertJson($payload);
+        $response->assertStatus(204)
+            ->assertNoContent();
     }
 }

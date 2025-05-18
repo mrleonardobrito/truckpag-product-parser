@@ -9,7 +9,7 @@ use App\Models\SQLite\Product as EloquentProduct;
 
 class SQLiteProductRepository implements ProductRepositoryInterface
 {
-    public function findByCode(int $code): DomainProduct
+    public function findByCode(string $code): DomainProduct
     {
         $product = EloquentProduct::where('code', $code)->firstOrFail();
         return new DomainProduct($product->toArray());
@@ -30,15 +30,21 @@ class SQLiteProductRepository implements ProductRepositoryInterface
         ];
     }
 
-    public function updateByCode(int $code, array $data): DomainProduct
+    public function updateByCode(string $code, array $data): DomainProduct
     {
         $product = EloquentProduct::where('code', $code)->firstOrFail();
         $product->update($data);
         return new DomainProduct($product->fresh()->toArray());
     }
 
-    public function deleteByCode(int $code): void
+    public function deleteByCode(string $code): void
     {
         EloquentProduct::where('code', $code)->update(['status' => ProductStatus::TRASH->value]);
+    }
+
+    public function updateOrCreate(DomainProduct $product): DomainProduct
+    {
+        $product = EloquentProduct::updateOrCreate(['code' => $product->code], $product->toArray());
+        return new DomainProduct($product->toArray());
     }
 }

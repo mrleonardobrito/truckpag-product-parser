@@ -2,34 +2,35 @@
 
 namespace App\Domain\Product;
 
-use DateTime;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
 class Product
 {
-    public int|string $code;
-    public ProductStatus $status;
-    public DateTime $imported_t;
-    public string $url;
-    public string $creator;
-    public DateTime $created_t;
-    public DateTime $last_modified_t;
+    public string $code;
     public string $product_name;
-    public string $quantity;
-    public string $brands;
-    public string $categories;
-    public string $labels;
-    public string $cities;
-    public string $purchase_places;
-    public string $stores;
-    public string $ingredients_text;
-    public string $traces;
-    public string $serving_size;
-    public float $serving_quantity;
-    public float $nutriscore_score;
-    public string $nutriscore_grade;
-    public string $main_category;
-    public string $image_url;
+    public ProductStatus $status;
+    public int $imported_t;
+
+    public ?string $url = null;
+    public ?string $creator = null;
+    public ?int $created_t = null;
+    public ?int $last_modified_t = null;
+    public ?string $quantity = null;
+    public ?string $brands = null;
+    public ?string $categories = null;
+    public ?string $labels = null;
+    public ?string $cities = null;
+    public ?string $purchase_places = null;
+    public ?string $stores = null;
+    public ?string $ingredients_text = null;
+    public ?string $traces = null;
+    public ?string $serving_size = null;
+    public ?float $serving_quantity = null;
+    public ?int $nutriscore_score = null;
+    public ?string $nutriscore_grade = null;
+    public ?string $main_category = null;
+    public ?string $image_url = null;
 
     public function __construct(array $attributes)
     {
@@ -41,8 +42,8 @@ class Product
             'main_category' => 'Main category',
         ];
         foreach ($stringFields as $field => $label) {
-            if (array_key_exists($field, $attributes)) {
-                if (!is_string($attributes[$field]) || trim($attributes[$field]) === '') {
+            if (array_key_exists($field, $attributes) && $attributes[$field] !== null) {
+                if (!is_string($attributes[$field])) {
                     $errors[$field][] = "$label, if provided, cannot be empty or invalid.";
                 }
             }
@@ -52,7 +53,7 @@ class Product
             'nutriscore_score' => 'Nutriscore score',
         ];
         foreach ($numericFields as $field => $label) {
-            if (array_key_exists($field, $attributes)) {
+            if (array_key_exists($field, $attributes) && $attributes[$field] !== null) {
                 if (!is_numeric($attributes[$field])) {
                     $errors[$field][] = "$label, if provided, must be numeric.";
                 }
@@ -64,9 +65,10 @@ class Product
             'last_modified_t' => 'Modification date',
         ];
         foreach ($dateFields as $field => $label) {
-            if (array_key_exists($field, $attributes)) {
+            if (array_key_exists($field, $attributes) && $attributes[$field] !== null) {
                 try {
-                    new \DateTime($attributes[$field]);
+                    $date = Carbon::createFromTimestamp($attributes[$field]);
+                    $attributes[$field] = (int) $date->timestamp;
                 } catch (\Exception $e) {
                     $errors[$field][] = "$label, if provided, must be a valid date.";
                 }
@@ -77,11 +79,11 @@ class Product
         }
         $this->code = $attributes['code'];
         $this->status = ProductStatus::from($attributes['status']);
-        $this->imported_t = new DateTime($attributes['imported_t']);
+        $this->imported_t = (int) $attributes['imported_t'];
         $this->url = $attributes['url'];
         $this->creator = $attributes['creator'];
-        $this->created_t = new DateTime($attributes['created_t']);
-        $this->last_modified_t = new DateTime($attributes['last_modified_t']);
+        $this->created_t = (int) $attributes['created_t'];
+        $this->last_modified_t = (int) $attributes['last_modified_t'];
         $this->product_name = $attributes['product_name'];
         $this->quantity = $attributes['quantity'];
         $this->brands = $attributes['brands'];

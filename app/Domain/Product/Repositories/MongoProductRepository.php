@@ -9,7 +9,7 @@ use App\Models\Mongo\Product as MongoProduct;
 
 class MongoProductRepository implements ProductRepositoryInterface
 {
-    public function findByCode(int $code): DomainProduct
+    public function findByCode(string $code): DomainProduct
     {
         $product = MongoProduct::where('code', $code)->firstOrFail();
         return new DomainProduct($product->toArray());
@@ -29,15 +29,21 @@ class MongoProductRepository implements ProductRepositoryInterface
         ];
     }
 
-    public function updateByCode(int $code, array $data): DomainProduct
+    public function updateByCode(string $code, array $data): DomainProduct
     {
         $product = MongoProduct::where('code', $code)->firstOrFail();
         $product->update($data);
         return new DomainProduct($product->fresh()->toArray());
     }
 
-    public function deleteByCode(int $code): void
+    public function deleteByCode(string $code): void
     {
         MongoProduct::where('code', $code)->update(['status' => ProductStatus::TRASH->value]);
+    }
+
+    public function updateOrCreate(DomainProduct $product): DomainProduct
+    {
+        $product = MongoProduct::updateOrCreate(['code' => $product->code], $product->toArray());
+        return new DomainProduct($product->toArray());
     }
 }

@@ -12,7 +12,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'code' => $this->faker->unique()->numberBetween(100000, 999999),
+            'code' => $this->faker->unique()->numerify('##########'),
             'status' => $this->faker->randomElement(['draft', 'trash', 'published']),
             'url' => $this->faker->url,
             'creator' => $this->faker->name,
@@ -34,4 +34,4 @@ class ProductFactory extends Factory
             'image_url' => $this->faker->imageUrl,
         ];
     }
-} 
+}

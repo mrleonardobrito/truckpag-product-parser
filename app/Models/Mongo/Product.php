@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends MongoModel
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'code',
         'status',
@@ -36,9 +36,9 @@ class Product extends MongoModel
     ];
 
     protected $casts = [
-        'imported_t' => 'datetime',
-        'created_t' => 'datetime',
-        'last_modified_t' => 'datetime'
+        'imported_t' => 'timestamp',
+        'created_t' => 'timestamp',
+        'last_modified_t' => 'timestamp'
     ];
 
     public function toArray(): array

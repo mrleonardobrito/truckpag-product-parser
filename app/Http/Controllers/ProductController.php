@@ -63,7 +63,7 @@ class ProductController extends Controller
      *     )
      * )
      */
-    public function show(int $code){
+    public function show($code){
         $product = $this->productRepository->findByCode($code);
         return response()->json($product);
     }
