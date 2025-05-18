@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Domain;
+namespace App\Domain\Product;
 
 use DateTime;
+use Illuminate\Validation\ValidationException;
 
 class Product
 {
@@ -32,6 +33,48 @@ class Product
 
     public function __construct(array $attributes)
     {
+        $errors = [];
+        $stringFields = [
+            'product_name' => 'Product name',
+            'quantity' => 'Quantity',
+            'nutriscore_grade' => 'Nutriscore grade',
+            'main_category' => 'Main category',
+        ];
+        foreach ($stringFields as $field => $label) {
+            if (array_key_exists($field, $attributes)) {
+                if (!is_string($attributes[$field]) || trim($attributes[$field]) === '') {
+                    $errors[$field][] = "$label, if provided, cannot be empty or invalid.";
+                }
+            }
+        }
+        $numericFields = [
+            'serving_quantity' => 'Serving quantity',
+            'nutriscore_score' => 'Nutriscore score',
+        ];
+        foreach ($numericFields as $field => $label) {
+            if (array_key_exists($field, $attributes)) {
+                if (!is_numeric($attributes[$field])) {
+                    $errors[$field][] = "$label, if provided, must be numeric.";
+                }
+            }
+        }
+        $dateFields = [
+            'imported_t' => 'Import date',
+            'created_t' => 'Creation date',
+            'last_modified_t' => 'Modification date',
+        ];
+        foreach ($dateFields as $field => $label) {
+            if (array_key_exists($field, $attributes)) {
+                try {
+                    new \DateTime($attributes[$field]);
+                } catch (\Exception $e) {
+                    $errors[$field][] = "$label, if provided, must be a valid date.";
+                }
+            }
+        }
+        if (!empty($errors)) {
+            throw ValidationException::withMessages($errors);
+        }
         $this->code = $attributes['code'];
         $this->status = $attributes['status'];
         $this->imported_t = new DateTime($attributes['imported_t']);

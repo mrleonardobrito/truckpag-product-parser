@@ -6,13 +6,13 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/products": {
+        "/products": {
             "get": {
                 "tags": [
                     "Produtos"
                 ],
                 "summary": "Lista todos os produtos",
-                "operationId": "1bfaa78d1c2c3848ab8165c5dadcad3e",
+                "operationId": "c1ff6f862214e1896c59cfe0491ce0e8",
                 "parameters": [
                     {
                         "name": "page",
@@ -42,13 +42,13 @@
                 }
             }
         },
-        "/api/products/{code}": {
+        "/products/{code}": {
             "get": {
                 "tags": [
                     "Produtos"
                 ],
                 "summary": "Exibe um produto específico",
-                "operationId": "d3deebb6679ed9b4ecd1c3af94736c15",
+                "operationId": "49b03d87d85276e8020558b6ee931937",
                 "parameters": [
                     {
                         "name": "code",
@@ -63,6 +63,98 @@
                 "responses": {
                     "200": {
                         "description": "Produto retornado com sucesso"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Atualiza um produto",
+                "operationId": "3ca6aab99570e78efd32bac1e792c4d2",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Código do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "creator": {
+                                        "type": "string"
+                                    },
+                                    "product_name": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "string"
+                                    },
+                                    "brands": {
+                                        "type": "string"
+                                    },
+                                    "categories": {
+                                        "type": "string"
+                                    },
+                                    "labels": {
+                                        "type": "string"
+                                    },
+                                    "cities": {
+                                        "type": "string"
+                                    },
+                                    "purchase_places": {
+                                        "type": "string"
+                                    },
+                                    "stores": {
+                                        "type": "string"
+                                    },
+                                    "ingredients_text": {
+                                        "type": "string"
+                                    },
+                                    "traces": {
+                                        "type": "string"
+                                    },
+                                    "serving_size": {
+                                        "type": "string"
+                                    },
+                                    "serving_quantity": {
+                                        "type": "number"
+                                    },
+                                    "nutriscore_score": {
+                                        "type": "number"
+                                    },
+                                    "nutriscore_grade": {
+                                        "type": "string"
+                                    },
+                                    "main_category": {
+                                        "type": "string"
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "No content"
                     }
                 }
             }

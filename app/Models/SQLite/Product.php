@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\SQLite;
 
-use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Product extends Model {
-    protected $connection = 'mongodb';
-    protected $collection = 'products';
+class Product extends Model
+{
+    use HasFactory;
+    
+    protected $connection = 'sqlite';
+    protected $table = 'products';
+
     protected $fillable = [
         'code',
         'status',
@@ -38,9 +43,7 @@ class Product extends Model {
         'created_t' => 'datetime',
         'last_modified_t' => 'datetime'
     ];
-
     
-
     public function toArray(): array
     {
         return [

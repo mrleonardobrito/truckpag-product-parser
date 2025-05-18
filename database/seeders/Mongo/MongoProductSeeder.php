@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Mongo;
 
-use App\Models\Product;
+use App\Models\Mongo\Product;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class MongoProductSeeder extends Seeder
 {
     public function run(): void
     {

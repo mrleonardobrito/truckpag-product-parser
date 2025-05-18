@@ -13,7 +13,6 @@ use Illuminate\Routing\Controller as BaseController;
  *     description="Documentação da API de produtos TruckPag"
  * )
  */ 
-
 abstract class Controller extends BaseController
 {
     use ValidatesRequests;

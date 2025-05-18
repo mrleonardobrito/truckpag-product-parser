@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Domain\Product\ProductRepositoryInterface;
+use App\Domain\Product\Repositories\SQLiteProductRepository;
+use App\Domain\Product\Repositories\MongoProductRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,9 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(ProductRepository::class, function ($app) {
-            return new ProductRepository();
-        });
+        if ($this->app->environment('testing')) {
+            $this->app->bind(ProductRepositoryInterface::class, SQLiteProductRepository::class);
+        } else {
+            $this->app->bind(ProductRepositoryInterface::class, MongoProductRepository::class);
+        }
     }
 
     /**
