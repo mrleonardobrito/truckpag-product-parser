@@ -2,6 +2,7 @@
 
 namespace App\Domain\Product\Repositories;
 
+use App\Domain\Product\ProductStatus;
 use App\Domain\Product\ProductRepositoryInterface;
 use App\Domain\Product\Product as DomainProduct;
 use App\Models\Mongo\Product as MongoProduct;
@@ -33,5 +34,10 @@ class MongoProductRepository implements ProductRepositoryInterface
         $product = MongoProduct::where('code', $code)->firstOrFail();
         $product->update($data);
         return new DomainProduct($product->fresh()->toArray());
+    }
+
+    public function deleteByCode(int $code): void
+    {
+        MongoProduct::where('code', $code)->update(['status' => ProductStatus::TRASH->value]);
     }
 }

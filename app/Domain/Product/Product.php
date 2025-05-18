@@ -8,7 +8,7 @@ use Illuminate\Validation\ValidationException;
 class Product
 {
     public int|string $code;
-    public string $status;
+    public ProductStatus $status;
     public DateTime $imported_t;
     public string $url;
     public string $creator;
@@ -76,7 +76,7 @@ class Product
             throw ValidationException::withMessages($errors);
         }
         $this->code = $attributes['code'];
-        $this->status = $attributes['status'];
+        $this->status = ProductStatus::from($attributes['status']);
         $this->imported_t = new DateTime($attributes['imported_t']);
         $this->url = $attributes['url'];
         $this->creator = $attributes['creator'];
@@ -104,7 +104,7 @@ class Product
     {
         return [
             'code' => $this->code,
-            'status' => $this->status,
+            'status' => $this->status->value,
             'imported_t' => $this->imported_t,
             'url' => $this->url,
             'creator' => $this->creator,

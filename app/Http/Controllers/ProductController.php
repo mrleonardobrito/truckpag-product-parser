@@ -117,4 +117,28 @@ class ProductController extends Controller
         $product = $this->productRepository->updateByCode($code, $data);
         return response()->json($product, 204);
     }
+
+    /**
+     * @OA\Delete(
+     *     path="/api/products/{code}",
+     *     summary="Deleta um produto",
+     *     tags={"Produtos"},
+     *     @OA\Parameter(
+     *         name="code",
+     *         in="path",
+     *         description="Código do produto",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="No content"
+     *     )
+     * )
+     */
+    public function delete(int $code)
+    {
+        $this->productRepository->deleteByCode($code);
+        return response()->json(null, 204);
+    }
 }

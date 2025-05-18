@@ -176,6 +176,29 @@
                         "description": "No content"
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Deleta um produto",
+                "operationId": "19602b0a91bf7634caa977a581c8ffba",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Código do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
             }
         }
     },
