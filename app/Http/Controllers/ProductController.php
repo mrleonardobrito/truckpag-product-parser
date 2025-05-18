@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/products",
+     *     path="/api/products",
      *     summary="Lista todos os produtos",
      *     tags={"Produtos"},
      *     @OA\Parameter(
@@ -47,7 +47,7 @@ class ProductController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/products/{code}",
+     *     path="/api/products/{code}",
      *     summary="Exibe um produto específico",
      *     tags={"Produtos"},
      *     @OA\Parameter(
@@ -70,7 +70,7 @@ class ProductController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/products/{code}",
+     *     path="/api/products/{code}",
      *     summary="Atualiza um produto",
      *     tags={"Produtos"},
      *     @OA\Parameter(
@@ -84,25 +84,25 @@ class ProductController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             type="object",
-     *             @OA\Property(property="status", type="string),
-     *             @OA\Property(property="url", type="string"),
-     *             @OA\Property(property="creator", type="string"),
-     *             @OA\Property(property="product_name", type="string"),
-     *             @OA\Property(property="quantity", type="string"),
-     *             @OA\Property(property="brands", type="string"),
-     *             @OA\Property(property="categories", type="string"),
-     *             @OA\Property(property="labels", type="string"),
-     *             @OA\Property(property="cities", type="string"),
-     *             @OA\Property(property="purchase_places", type="string"),
-     *             @OA\Property(property="stores", type="string"),
-     *             @OA\Property(property="ingredients_text", type="string"),
-     *             @OA\Property(property="traces", type="string"),
-     *             @OA\Property(property="serving_size", type="string"),
-     *             @OA\Property(property="serving_quantity", type="number"),
-     *             @OA\Property(property="nutriscore_score", type="number"),
-     *             @OA\Property(property="nutriscore_grade", type="string"),
-     *             @OA\Property(property="main_category", type="string"),
-     *             @OA\Property(property="image_url", type="string")
+     *             @OA\Property(property="status", type="string", default="published"),
+     *             @OA\Property(property="url", type="string", default="https://example.com"),
+     *             @OA\Property(property="creator", type="string", default="John Doe"),
+     *             @OA\Property(property="product_name", type="string", default="Product Name"),
+     *             @OA\Property(property="quantity", type="string", default="100g"),
+     *             @OA\Property(property="brands", type="string", default="brand1, brand2"),
+     *             @OA\Property(property="categories", type="string", default="category1, category2"),
+     *             @OA\Property(property="labels", type="string", default="label1, label2"),
+     *             @OA\Property(property="cities", type="string", default="city1, city2"),
+     *             @OA\Property(property="purchase_places", type="string", default="purchase_place1, purchase_place2"),
+     *             @OA\Property(property="stores", type="string", default="store1, store2"),
+     *             @OA\Property(property="ingredients_text", type="string", default="ingredient1, ingredient2"),
+     *             @OA\Property(property="traces", type="string", default="trace1, trace2"),
+     *             @OA\Property(property="serving_size", type="string", default="100g"),
+     *             @OA\Property(property="serving_quantity", type="number", default=100),
+     *             @OA\Property(property="nutriscore_score", type="number", default=100),
+     *             @OA\Property(property="nutriscore_grade", type="string", default="A"),
+     *             @OA\Property(property="main_category", type="string", default="main_category"),
+     *             @OA\Property(property="image_url", type="string", default="https://example.com/image.jpg")
      *         )
      *     ),
      *     @OA\Response(
@@ -115,6 +115,6 @@ class ProductController extends Controller
     {
         $data = request()->all();
         $product = $this->productRepository->updateByCode($code, $data);
-        return response()->json($product);
+        return response()->json($product, 204);
     }
 }

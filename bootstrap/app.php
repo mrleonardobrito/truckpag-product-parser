@@ -17,21 +17,13 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->renderable(function (Exception $e, $request) {
+        $exceptions->renderable(function (HttpExceptionInterface $e, $request) {
             if ($request->is('api/*')) {
-                if ($e instanceof ValidationException) {
-                    return response()->json([
-                        'message' => $e->getMessage(),
-                        'errors' => $e->errors(),
-                        'code' => 422,
-                    ], 422);
-                } else if ($e instanceof HttpExceptionInterface) {
-                    return response()->json([
-                        'message' => $e->getMessage() ?: 'HTTP error',
-                        'exception' => class_basename($e),
-                        'code' => $e->getStatusCode(),
-                    ], $e->getStatusCode());
-                }
+                return response()->json([
+                    'message' => $e->getMessage() ?: 'HTTP error',
+                    'exception' => class_basename($e),
+                    'code' => $e->getStatusCode(),
+                ], $e->getStatusCode());
             }
         });
     })

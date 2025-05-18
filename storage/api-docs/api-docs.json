@@ -6,13 +6,13 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/products": {
+        "/api/products": {
             "get": {
                 "tags": [
                     "Produtos"
                 ],
                 "summary": "Lista todos os produtos",
-                "operationId": "c1ff6f862214e1896c59cfe0491ce0e8",
+                "operationId": "1bfaa78d1c2c3848ab8165c5dadcad3e",
                 "parameters": [
                     {
                         "name": "page",
@@ -42,13 +42,13 @@
                 }
             }
         },
-        "/products/{code}": {
+        "/api/products/{code}": {
             "get": {
                 "tags": [
                     "Produtos"
                 ],
                 "summary": "Exibe um produto específico",
-                "operationId": "49b03d87d85276e8020558b6ee931937",
+                "operationId": "d3deebb6679ed9b4ecd1c3af94736c15",
                 "parameters": [
                     {
                         "name": "code",
@@ -71,7 +71,7 @@
                     "Produtos"
                 ],
                 "summary": "Atualiza um produto",
-                "operationId": "3ca6aab99570e78efd32bac1e792c4d2",
+                "operationId": "0f1e54a84587dee40efb8d8341a15536",
                 "parameters": [
                     {
                         "name": "code",
@@ -90,61 +90,80 @@
                             "schema": {
                                 "properties": {
                                     "status": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "published"
                                     },
                                     "url": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "https://example.com"
                                     },
                                     "creator": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "John Doe"
                                     },
                                     "product_name": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "Product Name"
                                     },
                                     "quantity": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "100g"
                                     },
                                     "brands": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "brand1, brand2"
                                     },
                                     "categories": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "category1, category2"
                                     },
                                     "labels": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "label1, label2"
                                     },
                                     "cities": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "city1, city2"
                                     },
                                     "purchase_places": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "purchase_place1, purchase_place2"
                                     },
                                     "stores": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "store1, store2"
                                     },
                                     "ingredients_text": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "ingredient1, ingredient2"
                                     },
                                     "traces": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "trace1, trace2"
                                     },
                                     "serving_size": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "100g"
                                     },
                                     "serving_quantity": {
-                                        "type": "number"
+                                        "type": "number",
+                                        "default": 100
                                     },
                                     "nutriscore_score": {
-                                        "type": "number"
+                                        "type": "number",
+                                        "default": 100
                                     },
                                     "nutriscore_grade": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "A"
                                     },
                                     "main_category": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "main_category"
                                     },
                                     "image_url": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "default": "https://example.com/image.jpg"
                                     }
                                 },
                                 "type": "object"

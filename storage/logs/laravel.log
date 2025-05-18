@@ -10147,3 +10147,115 @@ Did you mean one of these?
 #27 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
 #28 {main}
 "} 
+[2025-05-18 03:00:06] local.ERROR: [Syntax Error] Expected Doctrine\Common\Annotations\DocLexer::T_CLOSE_PARENTHESIS, got 'url' in \App\Http\Controllers\ProductController->update() in /home/mrleonardobrito/projetos/truckpag-product-parser/app/Http/Controllers/ProductController.php on line 88:43 {"exception":"[object] (ErrorException(code: 0): [Syntax Error] Expected Doctrine\\Common\\Annotations\\DocLexer::T_CLOSE_PARENTHESIS, got 'url' in \\App\\Http\\Controllers\\ProductController->update() in /home/mrleonardobrito/projetos/truckpag-product-parser/app/Http/Controllers/ProductController.php on line 88:43 at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Loggers/DefaultLogger.php:23)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php(256): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Loggers/DefaultLogger.php(23): trigger_error()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/psr/log/src/LoggerTrait.php(50): OpenApi\\Loggers\\DefaultLogger->log()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Analysers/DocBlockParser.php(76): Psr\\Log\\AbstractLogger->error()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Analysers/DocBlockAnnotationFactory.php(61): OpenApi\\Analysers\\DocBlockParser->fromComment()
+#6 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Analysers/ReflectionAnalyser.php(136): OpenApi\\Analysers\\DocBlockAnnotationFactory->build()
+#7 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Analysers/ReflectionAnalyser.php(62): OpenApi\\Analysers\\ReflectionAnalyser->analyzeFqdn()
+#8 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Generator.php(400): OpenApi\\Analysers\\ReflectionAnalyser->fromFile()
+#9 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/zircote/swagger-php/src/Generator.php(363): OpenApi\\Generator->scanSources()
+#10 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/darkaonline/l5-swagger/src/Generator.php(177): OpenApi\\Generator->generate()
+#11 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/darkaonline/l5-swagger/src/Generator.php(118): L5Swagger\\Generator->scanFilesForDocumentation()
+#12 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/darkaonline/l5-swagger/src/Console/GenerateDocsCommand.php(73): L5Swagger\\Generator->generateDocs()
+#13 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/darkaonline/l5-swagger/src/Console/GenerateDocsCommand.php(56): L5Swagger\\Console\\GenerateDocsCommand->generateDocumentation()
+#14 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): L5Swagger\\Console\\GenerateDocsCommand->handle()
+#15 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure()
+#17 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#18 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Container/Container.php(754): Illuminate\\Container\\BoundMethod::call()
+#19 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call()
+#20 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute()
+#21 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run()
+#22 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(1094): Illuminate\\Console\\Command->run()
+#23 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand()
+#24 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#25 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#26 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#27 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#28 {main}
+"} 
+[2025-05-18 03:02:42] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2025-05-18 03:03:48] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2025-05-18 03:06:02] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2025-05-18 03:06:19] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2025-05-18 03:06:39] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2025-05-18 03:07:53] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2025-05-18 03:07:58] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
+[2025-05-18 03:08:09] local.ERROR: There are no commands defined in the "ide-helper" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"ide-helper\" namespace. at /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(709): Symfony\\Component\\Console\\Application->findNamespace()
+#1 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(284): Symfony\\Component\\Console\\Application->find()
+#2 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/symfony/console/Application.php(193): Symfony\\Component\\Console\\Application->doRun()
+#3 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run()
+#4 /home/mrleonardobrito/projetos/truckpag-product-parser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1234): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 /home/mrleonardobrito/projetos/truckpag-product-parser/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
+#6 {main}
+"} 
