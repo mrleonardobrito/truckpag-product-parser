@@ -1,0 +1,112 @@
+{
+    "info": {
+        "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "name": "Truckpag Product Parser API",
+        "description": "Coleção de endpoints para a API de produtos",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/",
+                    "host": ["{{base_url}}"],
+                    "path": [""]
+                },
+                "description": "Endpoint para verificar o status da API"
+            }
+        },
+        {
+            "name": "Listar Produtos",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/products",
+                    "host": ["{{base_url}}"],
+                    "path": ["products"]
+                },
+                "description": "Endpoint para listar todos os produtos"
+            }
+        },
+        {
+            "name": "Buscar Produto por Código",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/products/:code",
+                    "host": ["{{base_url}}"],
+                    "path": ["products", ":code"],
+                    "variable": [
+                        {
+                            "key": "code",
+                            "value": "",
+                            "description": "Código do produto"
+                        }
+                    ]
+                },
+                "description": "Endpoint para buscar um produto específico pelo código"
+            }
+        },
+        {
+            "name": "Atualizar Produto",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"Nome do Produto\",\n    \"description\": \"Descrição do produto\",\n    \"price\": 99.99\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/products/:code",
+                    "host": ["{{base_url}}"],
+                    "path": ["products", ":code"],
+                    "variable": [
+                        {
+                            "key": "code",
+                            "value": "",
+                            "description": "Código do produto"
+                        }
+                    ]
+                },
+                "description": "Endpoint para atualizar um produto existente"
+            }
+        },
+        {
+            "name": "Deletar Produto",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/products/:code",
+                    "host": ["{{base_url}}"],
+                    "path": ["products", ":code"],
+                    "variable": [
+                        {
+                            "key": "code",
+                            "value": "",
+                            "description": "Código do produto"
+                        }
+                    ]
+                },
+                "description": "Endpoint para deletar um produto"
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000/api",
+            "type": "string"
+        }
+    ]
+}
