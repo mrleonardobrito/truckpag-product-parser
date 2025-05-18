@@ -6,6 +6,7 @@ use App\Domain\Product\ProductStatus;
 use App\Domain\Product\ProductRepositoryInterface;
 use App\Domain\Product\Product as DomainProduct;
 use App\Models\Mongo\Product as MongoProduct;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MongoProductRepository implements ProductRepositoryInterface
 {
@@ -17,7 +18,7 @@ class MongoProductRepository implements ProductRepositoryInterface
 
     public function findAllPaginated(int $page, int $perPage): array
     {
-        $paginator = MongoProduct::paginate($perPage, ['*'], 'page', $page);
+        $paginator = MongoProduct::where('status', '!=', ProductStatus::TRASH->value)->paginate($perPage, ['*'], 'page', $page);
         return [
             'data' => $paginator->map(function ($item) {
                 return new DomainProduct($item->toArray());
@@ -31,14 +32,23 @@ class MongoProductRepository implements ProductRepositoryInterface
 
     public function updateByCode(string $code, array $data): DomainProduct
     {
-        $product = MongoProduct::where('code', $code)->firstOrFail();
-        $product->update($data);
-        return new DomainProduct($product->fresh()->toArray());
+        $product = MongoProduct::where('code', $code)->where('status', '!=', ProductStatus::TRASH->value)->first();
+        if ($product) {
+            $product->update($data);
+            return new DomainProduct($product->fresh()->toArray());
+        } else {
+            throw new ModelNotFoundException('Product not found');
+        }
     }
 
     public function deleteByCode(string $code): void
     {
-        MongoProduct::where('code', $code)->update(['status' => ProductStatus::TRASH->value]);
+        $product = MongoProduct::where('code', $code)->where('status', '!=', ProductStatus::TRASH->value)->first();
+        if ($product) {
+            $product->update(['status' => ProductStatus::TRASH->value]);
+        } else {
+            throw new ModelNotFoundException('Product not found');
+        }
     }
 
     public function updateOrCreate(DomainProduct $product): DomainProduct

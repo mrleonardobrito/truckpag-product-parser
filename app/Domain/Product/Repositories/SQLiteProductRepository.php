@@ -6,6 +6,7 @@ use App\Domain\Product\ProductStatus;
 use App\Domain\Product\ProductRepositoryInterface;
 use App\Domain\Product\Product as DomainProduct;
 use App\Models\SQLite\Product as EloquentProduct;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SQLiteProductRepository implements ProductRepositoryInterface
 {
@@ -39,7 +40,12 @@ class SQLiteProductRepository implements ProductRepositoryInterface
 
     public function deleteByCode(string $code): void
     {
-        EloquentProduct::where('code', $code)->update(['status' => ProductStatus::TRASH->value]);
+        $product = EloquentProduct::where('code', $code)->first();
+        if ($product) {
+            $product->update(['status' => ProductStatus::TRASH->value]);
+        } else {
+            throw new ModelNotFoundException('Product not found');
+        }
     }
 
     public function updateOrCreate(DomainProduct $product): DomainProduct

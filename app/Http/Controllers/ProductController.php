@@ -111,7 +111,7 @@ class ProductController extends Controller
      *     )
      * )
      */
-    public function update(int $code)
+    public function update($code)
     {
         $data = request()->all();
         $product = $this->productRepository->updateByCode($code, $data);
@@ -136,7 +136,7 @@ class ProductController extends Controller
      *     )
      * )
      */
-    public function delete(int $code)
+    public function delete($code)
     {
         $this->productRepository->deleteByCode($code);
         return response()->json(null, 204);

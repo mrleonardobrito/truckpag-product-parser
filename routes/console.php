@@ -79,4 +79,4 @@ app(Schedule::class)
     ->timezone('America/Sao_Paulo')
     ->withoutOverlapping()
     ->sendOutputTo(storage_path('logs/import-open-foods-facts.log'))
-    ->dailyAt('06:32');
+    ->dailyAt('02:00');
