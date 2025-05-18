@@ -4,6 +4,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Cache;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
@@ -67,6 +68,8 @@ Artisan::command('app:import-open-foods-facts', function () {
         return 1;
     }
 
+    Cache::put('cron_last_run', now());
+
     $this->info('Importação dos produtos concluída com sucesso!');
     return 0;
 });
@@ -76,4 +79,4 @@ app(Schedule::class)
     ->timezone('America/Sao_Paulo')
     ->withoutOverlapping()
     ->sendOutputTo(storage_path('logs/import-open-foods-facts.log'))
-    ->dailyAt('02:00');
+    ->dailyAt('06:32');

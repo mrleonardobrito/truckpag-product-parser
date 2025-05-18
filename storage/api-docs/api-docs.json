@@ -200,6 +200,53 @@
                     }
                 }
             }
+        },
+        "/api": {
+            "get": {
+                "tags": [
+                    "Produtos"
+                ],
+                "summary": "Get status of the API",
+                "operationId": "22bd769d0f0bf4c779ba928546651c0d",
+                "responses": {
+                    "200": {
+                        "description": "Status of the API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "api": {
+                                            "type": "string",
+                                            "example": "TruckPag Product Parser"
+                                        },
+                                        "db_read": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "db_write": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "cron_last_run": {
+                                            "type": "string",
+                                            "example": "2021-01-01 00:00:00"
+                                        },
+                                        "uptime_seconds": {
+                                            "type": "integer",
+                                            "example": 100000
+                                        },
+                                        "memory_usage_bytes": {
+                                            "type": "integer",
+                                            "example": 1000000
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "tags": [
